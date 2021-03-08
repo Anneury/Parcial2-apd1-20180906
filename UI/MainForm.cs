@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Parcial2_apd1_20180906.UI.Registros;
+using Parcial2_apd1_20180906.UI.Consultas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +17,21 @@ namespace Parcial2_apd1_20180906
         public MainForm()
         {
             InitializeComponent();
+            this.RegistroProyectosToolStripMenuItem.Click += new EventHandler(this.RegistroProyectosToolStripMenuItem_ItemClicked);
+            this.ConsultaProyectosToolStripMenuItem.Click += new EventHandler(this.ConsultaProyectosToolStripMenuItem_ItemClicked);
         }
 
+        private void RegistroProyectosToolStripMenuItem_ItemClicked(object sender, EventArgs e)
+        {
+            var registro = new rProyectos();
+            registro.MdiParent = this;
+            registro.Show();
+        }
+        private void ConsultaProyectosToolStripMenuItem_ItemClicked(object sender, EventArgs e)
+        {
+            var consulta = new cProyectos();
+            consulta.MdiParent = this;
+            consulta.Show();
+        }
     }
 }
