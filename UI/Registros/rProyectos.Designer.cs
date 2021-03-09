@@ -30,6 +30,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rProyectos));
             this.TiempoTotalTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.EliminarButton = new System.Windows.Forms.Button();
@@ -82,33 +83,39 @@ namespace Parcial2_apd1_20180906.UI.Registros
             // EliminarButton
             // 
             this.EliminarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EliminarButton.Location = new System.Drawing.Point(246, 548);
+            this.EliminarButton.Image = ((System.Drawing.Image)(resources.GetObject("EliminarButton.Image")));
+            this.EliminarButton.Location = new System.Drawing.Point(287, 538);
             this.EliminarButton.Name = "EliminarButton";
-            this.EliminarButton.Size = new System.Drawing.Size(94, 29);
+            this.EliminarButton.Size = new System.Drawing.Size(99, 37);
             this.EliminarButton.TabIndex = 26;
             this.EliminarButton.Text = "Eliminar";
+            this.EliminarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.EliminarButton.UseVisualStyleBackColor = true;
             this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
             // 
             // GuardarButton
             // 
             this.GuardarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.GuardarButton.Location = new System.Drawing.Point(135, 548);
+            this.GuardarButton.Image = ((System.Drawing.Image)(resources.GetObject("GuardarButton.Image")));
+            this.GuardarButton.Location = new System.Drawing.Point(155, 538);
             this.GuardarButton.Name = "GuardarButton";
-            this.GuardarButton.Size = new System.Drawing.Size(94, 29);
+            this.GuardarButton.Size = new System.Drawing.Size(99, 37);
             this.GuardarButton.TabIndex = 24;
             this.GuardarButton.Text = "Guardar";
+            this.GuardarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.GuardarButton.UseVisualStyleBackColor = true;
             this.GuardarButton.Click += new System.EventHandler(this.GuardarButton_Click);
             // 
             // NuevoButton
             // 
             this.NuevoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NuevoButton.Location = new System.Drawing.Point(22, 547);
+            this.NuevoButton.Image = ((System.Drawing.Image)(resources.GetObject("NuevoButton.Image")));
+            this.NuevoButton.Location = new System.Drawing.Point(23, 538);
             this.NuevoButton.Name = "NuevoButton";
-            this.NuevoButton.Size = new System.Drawing.Size(94, 29);
+            this.NuevoButton.Size = new System.Drawing.Size(99, 37);
             this.NuevoButton.TabIndex = 22;
             this.NuevoButton.Text = "Nuevo";
+            this.NuevoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.NuevoButton.UseVisualStyleBackColor = true;
             this.NuevoButton.Click += new System.EventHandler(this.NuevoButton_Click);
             // 
@@ -136,22 +143,26 @@ namespace Parcial2_apd1_20180906.UI.Registros
             // RemoverFilaButton
             // 
             this.RemoverFilaButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RemoverFilaButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoverFilaButton.Image")));
             this.RemoverFilaButton.Location = new System.Drawing.Point(7, 220);
             this.RemoverFilaButton.Name = "RemoverFilaButton";
-            this.RemoverFilaButton.Size = new System.Drawing.Size(118, 29);
+            this.RemoverFilaButton.Size = new System.Drawing.Size(123, 32);
             this.RemoverFilaButton.TabIndex = 11;
             this.RemoverFilaButton.Text = "Remover Fila ";
+            this.RemoverFilaButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.RemoverFilaButton.UseVisualStyleBackColor = true;
             this.RemoverFilaButton.Click += new System.EventHandler(this.RemoverFilaButton_Click);
             // 
             // AgregarButton
             // 
             this.AgregarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AgregarButton.Location = new System.Drawing.Point(653, 64);
+            this.AgregarButton.Image = ((System.Drawing.Image)(resources.GetObject("AgregarButton.Image")));
+            this.AgregarButton.Location = new System.Drawing.Point(645, 56);
             this.AgregarButton.Name = "AgregarButton";
-            this.AgregarButton.Size = new System.Drawing.Size(94, 29);
+            this.AgregarButton.Size = new System.Drawing.Size(102, 37);
             this.AgregarButton.TabIndex = 11;
             this.AgregarButton.Text = "Agregar";
+            this.AgregarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.AgregarButton.UseVisualStyleBackColor = true;
             this.AgregarButton.Click += new System.EventHandler(this.AgregarButton_Click);
             // 
@@ -206,6 +217,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             // 
             // TipoTareaComboBox
             // 
+            this.TipoTareaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TipoTareaComboBox.FormattingEnabled = true;
             this.TipoTareaComboBox.Location = new System.Drawing.Point(7, 65);
             this.TipoTareaComboBox.Name = "TipoTareaComboBox";
@@ -224,11 +236,13 @@ namespace Parcial2_apd1_20180906.UI.Registros
             // BuscarButton
             // 
             this.BuscarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BuscarButton.Image = ((System.Drawing.Image)(resources.GetObject("BuscarButton.Image")));
             this.BuscarButton.Location = new System.Drawing.Point(187, 31);
             this.BuscarButton.Name = "BuscarButton";
             this.BuscarButton.Size = new System.Drawing.Size(94, 29);
             this.BuscarButton.TabIndex = 21;
             this.BuscarButton.Text = "Buscar";
+            this.BuscarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BuscarButton.UseVisualStyleBackColor = true;
             this.BuscarButton.Click += new System.EventHandler(this.BuscarButton_Click);
             // 
