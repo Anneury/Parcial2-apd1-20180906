@@ -69,6 +69,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.TiempoTotalTextBox.Size = new System.Drawing.Size(171, 27);
             this.TiempoTotalTextBox.TabIndex = 25;
             this.TiempoTotalTextBox.Text = "0";
+            this.TiempoTotalTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TiempoTotalTextBox_KeyPress);
             // 
             // label7
             // 
@@ -189,6 +190,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.TiempoTextBox.Size = new System.Drawing.Size(125, 27);
             this.TiempoTextBox.TabIndex = 8;
             this.TiempoTextBox.Text = "0";
+            this.TiempoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TiempoTextBox_KeyPress);
             // 
             // label6
             // 

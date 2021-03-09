@@ -9,7 +9,7 @@ namespace Parcial2_apd1_20180906.Entidades
     public class Proyectos
     {
         [Key]
-        public int TipoId { get; set; }
+        public int ProyectoId { get; set; }
         public DateTime Fecha { get; set; }
         public string DescripcionProyecto { get; set; }
         public int TiempoTotal { get; set; }
