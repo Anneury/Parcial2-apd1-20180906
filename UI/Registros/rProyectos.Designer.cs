@@ -29,6 +29,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TiempoTotalTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.EliminarButton = new System.Windows.Forms.Button();
@@ -51,9 +52,11 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ProyectoIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.MyErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProyectoIdNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // TiempoTotalTextBox
@@ -85,6 +88,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.EliminarButton.TabIndex = 26;
             this.EliminarButton.Text = "Eliminar";
             this.EliminarButton.UseVisualStyleBackColor = true;
+            this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
             // 
             // GuardarButton
             // 
@@ -95,6 +99,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.GuardarButton.TabIndex = 24;
             this.GuardarButton.Text = "Guardar";
             this.GuardarButton.UseVisualStyleBackColor = true;
+            this.GuardarButton.Click += new System.EventHandler(this.GuardarButton_Click);
             // 
             // NuevoButton
             // 
@@ -105,6 +110,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.NuevoButton.TabIndex = 22;
             this.NuevoButton.Text = "Nuevo";
             this.NuevoButton.UseVisualStyleBackColor = true;
+            this.NuevoButton.Click += new System.EventHandler(this.NuevoButton_Click);
             // 
             // groupBox1
             // 
@@ -136,6 +142,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.RemoverFilaButton.TabIndex = 11;
             this.RemoverFilaButton.Text = "Remover Fila ";
             this.RemoverFilaButton.UseVisualStyleBackColor = true;
+            this.RemoverFilaButton.Click += new System.EventHandler(this.RemoverFilaButton_Click);
             // 
             // AgregarButton
             // 
@@ -146,6 +153,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.AgregarButton.TabIndex = 11;
             this.AgregarButton.Text = "Agregar";
             this.AgregarButton.UseVisualStyleBackColor = true;
+            this.AgregarButton.Click += new System.EventHandler(this.AgregarButton_Click);
             // 
             // DetalleDataGrid
             // 
@@ -222,6 +230,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.BuscarButton.TabIndex = 21;
             this.BuscarButton.Text = "Buscar";
             this.BuscarButton.UseVisualStyleBackColor = true;
+            this.BuscarButton.Click += new System.EventHandler(this.BuscarButton_Click);
             // 
             // DescripcionTextBox
             // 
@@ -280,6 +289,10 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.ProyectoIdNumericUpDown.Size = new System.Drawing.Size(150, 27);
             this.ProyectoIdNumericUpDown.TabIndex = 27;
             // 
+            // MyErrorProvider
+            // 
+            this.MyErrorProvider.ContainerControl = this;
+            // 
             // rProyectos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -306,6 +319,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProyectoIdNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,5 +349,6 @@ namespace Parcial2_apd1_20180906.UI.Registros
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown ProyectoIdNumericUpDown;
+        private System.Windows.Forms.ErrorProvider MyErrorProvider;
     }
 }
