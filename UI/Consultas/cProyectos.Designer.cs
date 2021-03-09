@@ -40,12 +40,16 @@ namespace Parcial2_apd1_20180906.UI.Consultas
             // 
             // DatosDataGrid
             // 
+            this.DatosDataGrid.AllowUserToAddRows = false;
+            this.DatosDataGrid.AllowUserToDeleteRows = false;
+            this.DatosDataGrid.AllowUserToOrderColumns = true;
             this.DatosDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DatosDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DatosDataGrid.Location = new System.Drawing.Point(12, 71);
             this.DatosDataGrid.Name = "DatosDataGrid";
+            this.DatosDataGrid.ReadOnly = true;
             this.DatosDataGrid.RowHeadersWidth = 51;
             this.DatosDataGrid.RowTemplate.Height = 29;
             this.DatosDataGrid.Size = new System.Drawing.Size(927, 513);
@@ -64,6 +68,10 @@ namespace Parcial2_apd1_20180906.UI.Consultas
             // 
             this.FiltroComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FiltroComboBox.FormattingEnabled = true;
+            this.FiltroComboBox.Items.AddRange(new object[] {
+            "Proyecto Id",
+            "Descripcion",
+            "Tiempo"});
             this.FiltroComboBox.Location = new System.Drawing.Point(12, 37);
             this.FiltroComboBox.Name = "FiltroComboBox";
             this.FiltroComboBox.Size = new System.Drawing.Size(151, 28);
@@ -96,6 +104,7 @@ namespace Parcial2_apd1_20180906.UI.Consultas
             this.BuscarButton.TabIndex = 5;
             this.BuscarButton.Text = "Buscar";
             this.BuscarButton.UseVisualStyleBackColor = true;
+            this.BuscarButton.Click += new System.EventHandler(this.BuscarButton_Click);
             // 
             // cProyectos
             // 
