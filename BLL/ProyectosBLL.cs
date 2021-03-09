@@ -60,11 +60,11 @@ namespace Parcial2_apd1_20180906.BLL
 
             try
             {
-                contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle Where TipoId={proyecto.TipoId}");
+                /*contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle Where TipoId = {proyecto.TipoId}");
                 foreach (var anterior in proyecto.Detalle)
                 {
                     contexto.Entry(anterior).State = EntityState.Added;
-                }
+                }*/
                 contexto.Entry(proyecto).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
@@ -82,7 +82,7 @@ namespace Parcial2_apd1_20180906.BLL
         public static bool Guardar(Proyectos proyecto)
         {
             if (!Existe(proyecto.TipoId))
-               return Guardar(proyecto);
+               return Insertar(proyecto);
             else
                return Modificar(proyecto);
         }

@@ -36,12 +36,12 @@ namespace Parcial2_apd1_20180906.UI.Registros
             RequerimientosTextBox.Clear();
             TiempoTextBox.Text = "0";
             TiempoTotalTextBox.Text = "0";
-            DetalleDataGrid.DataSource = null;
             this.Detalle = null;
             CargarGrid();
         }
         private void LlenaCampo(Proyectos proyecto)
         {
+            this.Detalle = new List<ProyectosDetalle>();
             ProyectoIdNumericUpDown.Value = proyecto.TipoId;
             FechaDateTimePicker.Value = proyecto.Fecha;
             DescripcionTextBox.Text = proyecto.DescripcionProyecto;
@@ -174,6 +174,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
 
             proyecto = LlenaClase();
 
+            MessageBox.Show("Aqui pase!", "Exito");
             var paso = ProyectosBLL.Guardar(proyecto);
 
             if (paso)
