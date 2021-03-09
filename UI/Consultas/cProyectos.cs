@@ -31,13 +31,13 @@ namespace Parcial2_apd1_20180906.UI.Consultas
                 }
             }
 
-                if (!string.IsNullOrEmpty(CriterioTextBox.Text))
+            if (!string.IsNullOrEmpty(CriterioTextBox.Text))
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
                     //Proyecto id
                     case 0:
-                        listado = ProyectosBLL.GetList(e => e.TipoId == Convert.ToInt32(CriterioTextBox.Text));
+                        listado = ProyectosBLL.GetList(e => e.ProyectoId == Convert.ToInt32(CriterioTextBox.Text));
                         break;
                     //Descripcion
                     case 2:
@@ -53,6 +53,9 @@ namespace Parcial2_apd1_20180906.UI.Consultas
             {
                 listado = ProyectosBLL.GetList(e => true);
             }
+
+            DatosDataGrid.DataSource = null;
+            DatosDataGrid.DataSource = listado;
         }
     }
 }

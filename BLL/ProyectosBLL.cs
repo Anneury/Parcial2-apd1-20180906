@@ -18,7 +18,7 @@ namespace Parcial2_apd1_20180906.BLL
 
             try
             {
-                paso = contexto.Proyectos.Any(e => e.TipoId == id);
+                paso = contexto.Proyectos.Any(e => e.ProyectoId == id);
             }
             catch (Exception)
             {
@@ -32,6 +32,36 @@ namespace Parcial2_apd1_20180906.BLL
             return paso;
         }
 
+        public static bool ExisteDescripcion(string descripcion, int id)
+        {
+            Contexto contexto = new Contexto();
+            bool paso = false;
+
+            try
+            {
+                paso = contexto.Proyectos.Any(e => e.DescripcionProyecto == descripcion);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            if (paso)
+            {
+                Proyectos proyectos = Buscar(id);
+
+                if (proyectos == null)
+                    return true;
+
+                if (proyectos.DescripcionProyecto == descripcion)
+                    paso = false;
+            }
+            return paso;
+        }
         public static bool Insertar(Proyectos proyecto)
         {
             Contexto contexto = new Contexto();
@@ -39,7 +69,7 @@ namespace Parcial2_apd1_20180906.BLL
 
             try
             {
-                contexto.Add(proyecto);
+                contexto.Proyectos.Add(proyecto);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -60,11 +90,11 @@ namespace Parcial2_apd1_20180906.BLL
 
             try
             {
-                /*contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle Where TipoId = {proyecto.TipoId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle Where ProyectoId={proyecto.ProyectoId}");
                 foreach (var anterior in proyecto.Detalle)
                 {
                     contexto.Entry(anterior).State = EntityState.Added;
-                }*/
+                }
                 contexto.Entry(proyecto).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
@@ -81,7 +111,7 @@ namespace Parcial2_apd1_20180906.BLL
         }
         public static bool Guardar(Proyectos proyecto)
         {
-            if (!Existe(proyecto.TipoId))
+            if (!Existe(proyecto.ProyectoId))
                return Insertar(proyecto);
             else
                return Modificar(proyecto);
@@ -119,7 +149,7 @@ namespace Parcial2_apd1_20180906.BLL
 
             try
             {
-                proyecto = contexto.Proyectos.Include(e => e.Detalle).Where(p => p.TipoId == id).SingleOrDefault();
+                proyecto = contexto.Proyectos.Include(e => e.Detalle).Where(p => p.ProyectoId == id).SingleOrDefault();
             }
             catch (Exception)
             {

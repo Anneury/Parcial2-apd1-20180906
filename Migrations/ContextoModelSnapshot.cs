@@ -18,7 +18,7 @@ namespace Parcial2_apd1_20180906.Migrations
 
             modelBuilder.Entity("Parcial2_apd1_20180906.Entidades.Proyectos", b =>
                 {
-                    b.Property<int>("TipoId")
+                    b.Property<int>("ProyectoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -31,18 +31,18 @@ namespace Parcial2_apd1_20180906.Migrations
                     b.Property<int>("TiempoTotal")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("TipoId");
+                    b.HasKey("ProyectoId");
 
                     b.ToTable("Proyectos");
                 });
 
             modelBuilder.Entity("Parcial2_apd1_20180906.Entidades.ProyectosDetalle", b =>
                 {
-                    b.Property<int>("TipoId")
+                    b.Property<int>("DetalleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ProyectoId")
+                    b.Property<int>("ProyectoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Requerimiento")
@@ -51,10 +51,13 @@ namespace Parcial2_apd1_20180906.Migrations
                     b.Property<int>("Tiempo")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("TipoId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("TipoTarea")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("TipoId");
+                    b.HasKey("DetalleId");
 
                     b.HasIndex("ProyectoId");
 
@@ -78,7 +81,7 @@ namespace Parcial2_apd1_20180906.Migrations
                         new
                         {
                             TareaId = 1,
-                            TipoTarea = "Analisis"
+                            TipoTarea = "Análisis"
                         },
                         new
                         {
@@ -88,7 +91,7 @@ namespace Parcial2_apd1_20180906.Migrations
                         new
                         {
                             TareaId = 3,
-                            TipoTarea = "Programcion"
+                            TipoTarea = "Programación"
                         },
                         new
                         {
@@ -101,7 +104,9 @@ namespace Parcial2_apd1_20180906.Migrations
                 {
                     b.HasOne("Parcial2_apd1_20180906.Entidades.Proyectos", null)
                         .WithMany("Detalle")
-                        .HasForeignKey("ProyectoId");
+                        .HasForeignKey("ProyectoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Parcial2_apd1_20180906.Entidades.Tareas", b =>

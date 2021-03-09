@@ -64,12 +64,12 @@ namespace Parcial2_apd1_20180906.UI.Registros
             // 
             this.TiempoTotalTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.TiempoTotalTextBox.Enabled = false;
             this.TiempoTotalTextBox.Location = new System.Drawing.Point(600, 548);
             this.TiempoTotalTextBox.Name = "TiempoTotalTextBox";
             this.TiempoTotalTextBox.Size = new System.Drawing.Size(171, 27);
             this.TiempoTotalTextBox.TabIndex = 25;
             this.TiempoTotalTextBox.Text = "0";
-            this.TiempoTotalTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TiempoTotalTextBox_KeyPress);
             // 
             // label7
             // 

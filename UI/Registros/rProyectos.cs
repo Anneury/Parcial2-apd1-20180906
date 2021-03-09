@@ -27,6 +27,8 @@ namespace Parcial2_apd1_20180906.UI.Registros
         {
             DetalleDataGrid.DataSource = null;
             DetalleDataGrid.DataSource = this.Detalle;
+            DetalleDataGrid.Columns["DetalleId"].Visible = false;
+            DetalleDataGrid.Columns["ProyectoId"].Visible = false;
         }
         private void Limpiar()
         {
@@ -44,7 +46,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
         private void LlenaCampo(Proyectos proyecto)
         {
             this.Detalle = new List<ProyectosDetalle>();
-            ProyectoIdTextBox.Text = Convert.ToString(proyecto.ProyectoId);
+            ProyectoIdNumericUpDown.Value = proyecto.ProyectoId;
             FechaDateTimePicker.Value = proyecto.Fecha;
             DescripcionTextBox.Text = proyecto.DescripcionProyecto;
             TiempoTotalTextBox.Text = proyecto.TiempoTotal.ToString();
@@ -74,10 +76,17 @@ namespace Parcial2_apd1_20180906.UI.Registros
 
                 paso = false;
             }
-            if (DetalleDataGrid.CurrentRow == null)
+            if (this.Detalle.Count == 0)
             {
                 MyErrorProvider.SetError(DetalleDataGrid, "Debes agregar Tareas a este Data grid");
                 DetalleDataGrid.Focus();
+
+                paso = false;
+            }
+            if (ProyectosBLL.ExisteDescripcion(DescripcionTextBox.Text, (int)ProyectoIdNumericUpDown.Value))
+            {
+                MyErrorProvider.SetError(DescripcionTextBox, "Esta descripcion ya existe, agrega otra diferente!");
+                DescripcionTextBox.Focus();
 
                 paso = false;
             }
@@ -96,19 +105,6 @@ namespace Parcial2_apd1_20180906.UI.Registros
                 paso = false;
             }
 
-            if (TiempoTextBox.Text != string.Empty || TiempoTextBox.Text == string.Empty)
-            {
-                if (!Regex.IsMatch(TiempoTextBox.Text, @"^[0-9]+$"))
-                {
-                    MessageBox.Show("Debes ingresar solo numeros para este campo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return paso = false;
-                }
-
-                MyErrorProvider.SetError(TiempoTextBox, "Debes agregar datos a este campo");
-                TiempoTextBox.Focus();
-
-                paso = false;
-            }
 
             return paso;
         }
@@ -119,7 +115,28 @@ namespace Parcial2_apd1_20180906.UI.Registros
 
             return (proyecto != null);
         }
+        private Tareas BuscarId(string tipo)
+        {
+            Tareas tarea = new Tareas();
+            if (tipo == "Análisis")
+            {
+                tarea = TareasBLL.Buscar(1);
+            }
+            if (tipo == "Diseño")
+            {
+                tarea = TareasBLL.Buscar(2);
+            }
+            if (tipo == "Programación")
+            {
+                tarea = TareasBLL.Buscar(3);
+            }
+            if (tipo == "Prueba")
+            {
+                tarea = TareasBLL.Buscar(4);
+            }
 
+            return tarea;
+        }
         private void BuscarButton_Click(object sender, EventArgs e)
         {
             Proyectos proyecto;
@@ -138,6 +155,10 @@ namespace Parcial2_apd1_20180906.UI.Registros
 
         private void AgregarButton_Click(object sender, EventArgs e)
         {
+            MyErrorProvider.Clear();
+            if (!ValidarAgregar())
+                return;
+
             if (DetalleDataGrid.DataSource != null)
                 this.Detalle = (List<ProyectosDetalle>)DetalleDataGrid.DataSource;
 
@@ -148,19 +169,27 @@ namespace Parcial2_apd1_20180906.UI.Registros
             }
 
             int total, tiempo;
-            Tareas tarea = TareasBLL.Buscar(Convert.ToInt32(TipoTareaComboBox.Text));
+            Tareas tarea = BuscarId(TipoTareaComboBox.Text);
 
-            this.Detalle.Add(new ProyectosDetalle(
-                DetalleId: 0,
-                ProyectoId: (int)ProyectoIdNumericUpDown.Value,
-                TipoId: tarea.TareaId,
-                TipoTarea: tarea.TipoTarea,
-                Requerimiento: RequerimientosTextBox.Text,
-                Tiempo: Convert.ToInt32(TiempoTextBox.Text)
-                )                     
-            );
-            CargarGrid();
-            TipoTareaComboBox.Focus();
+            try 
+            {
+                this.Detalle.Add(new ProyectosDetalle(
+                    DetalleId: 0,
+                    ProyectoId: (int)ProyectoIdNumericUpDown.Value,
+                    TipoId: tarea.TareaId,
+                    TipoTarea: tarea.TipoTarea,
+                    Requerimiento: RequerimientosTextBox.Text,
+                    Tiempo: Convert.ToInt32(TiempoTextBox.Text)
+                    )                     
+                );
+                CargarGrid();
+                TipoTareaComboBox.Focus();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
 
             total = Convert.ToInt32(TiempoTotalTextBox.Text);
             tiempo = Convert.ToInt32(TiempoTextBox.Text);
@@ -174,23 +203,17 @@ namespace Parcial2_apd1_20180906.UI.Registros
         {
             string tiempo;
             int total = Convert.ToInt32(TiempoTotalTextBox.Text);
+            MyErrorProvider.Clear();
 
-            if(DetalleDataGrid.Rows.Count > 0 && DetalleDataGrid.CurrentRow != null)
+            if ((DetalleDataGrid.Rows.Count > 0) && (DetalleDataGrid.CurrentRow != null))
             {
-                tiempo = DetalleDataGrid.CurrentRow.Cells[3].Value.ToString();
-
-                if(total > Convert.ToInt32(tiempo))
-                {
-                    total -= Convert.ToInt32(tiempo);
-                }
-                else
-                {
-                    total = Convert.ToInt32(tiempo) - total;
-                }
-
+                tiempo = DetalleDataGrid.CurrentRow.Cells[5].Value.ToString();
+                total -= Convert.ToInt32(tiempo);
+ 
                 TiempoTotalTextBox.Text = Convert.ToString(total);
 
                 Detalle.RemoveAt(DetalleDataGrid.CurrentRow.Index);
+                CargarGrid();
             }
             else
             {
@@ -207,7 +230,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
         private void GuardarButton_Click(object sender, EventArgs e)
         {
             Proyectos proyecto;
-
+            MyErrorProvider.Clear();
             if (!Validar())
                 return;
 
@@ -216,6 +239,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
 
             if (paso)
             {
+                Limpiar();
                 MessageBox.Show("Transaccion Exitosa!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -240,7 +264,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
                 MessageBox.Show("Transaccion Fallida","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                if(MessageBox.Show("Desea uste eliminar este proyecto?","Validar",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                if(MessageBox.Show("Desea usted eliminar este proyecto?","Validar",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (ProyectosBLL.Eliminar(id))
                     {
@@ -256,7 +280,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
         private void TiempoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Para obligar a que sólo se introduzcan números
-            if (Char.IsDigit(e.KeyChar))
+           if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
