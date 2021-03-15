@@ -31,21 +31,22 @@ namespace Parcial2_apd1_20180906
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.RegistrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ConsultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RegistroProyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConsultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConsultaProyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RegistrosToolStripMenuItem,
             this.ConsultasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1189, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1189, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -57,6 +58,12 @@ namespace Parcial2_apd1_20180906
             this.RegistrosToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.RegistrosToolStripMenuItem.Text = "&Registros";
             // 
+            // RegistroProyectosToolStripMenuItem
+            // 
+            this.RegistroProyectosToolStripMenuItem.Name = "RegistroProyectosToolStripMenuItem";
+            this.RegistroProyectosToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+            this.RegistroProyectosToolStripMenuItem.Text = "Registro Proyectos";
+            // 
             // ConsultasToolStripMenuItem
             // 
             this.ConsultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -64,12 +71,6 @@ namespace Parcial2_apd1_20180906
             this.ConsultasToolStripMenuItem.Name = "ConsultasToolStripMenuItem";
             this.ConsultasToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.ConsultasToolStripMenuItem.Text = "&Consultas";
-            // 
-            // RegistroProyectosToolStripMenuItem
-            // 
-            this.RegistroProyectosToolStripMenuItem.Name = "RegistroProyectosToolStripMenuItem";
-            this.RegistroProyectosToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
-            this.RegistroProyectosToolStripMenuItem.Text = "Registro Proyectos";
             // 
             // ConsultaProyectosToolStripMenuItem
             // 
@@ -87,6 +88,7 @@ namespace Parcial2_apd1_20180906
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Main Form";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
