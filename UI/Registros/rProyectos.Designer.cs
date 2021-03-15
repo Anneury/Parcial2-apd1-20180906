@@ -87,7 +87,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.EliminarButton.Image = ((System.Drawing.Image)(resources.GetObject("EliminarButton.Image")));
             this.EliminarButton.Location = new System.Drawing.Point(287, 538);
             this.EliminarButton.Name = "EliminarButton";
-            this.EliminarButton.Size = new System.Drawing.Size(99, 37);
+            this.EliminarButton.Size = new System.Drawing.Size(106, 41);
             this.EliminarButton.TabIndex = 26;
             this.EliminarButton.Text = "Eliminar";
             this.EliminarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -100,7 +100,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.GuardarButton.Image = ((System.Drawing.Image)(resources.GetObject("GuardarButton.Image")));
             this.GuardarButton.Location = new System.Drawing.Point(155, 538);
             this.GuardarButton.Name = "GuardarButton";
-            this.GuardarButton.Size = new System.Drawing.Size(99, 37);
+            this.GuardarButton.Size = new System.Drawing.Size(106, 41);
             this.GuardarButton.TabIndex = 24;
             this.GuardarButton.Text = "Guardar";
             this.GuardarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -113,7 +113,7 @@ namespace Parcial2_apd1_20180906.UI.Registros
             this.NuevoButton.Image = ((System.Drawing.Image)(resources.GetObject("NuevoButton.Image")));
             this.NuevoButton.Location = new System.Drawing.Point(23, 538);
             this.NuevoButton.Name = "NuevoButton";
-            this.NuevoButton.Size = new System.Drawing.Size(99, 37);
+            this.NuevoButton.Size = new System.Drawing.Size(106, 41);
             this.NuevoButton.TabIndex = 22;
             this.NuevoButton.Text = "Nuevo";
             this.NuevoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
